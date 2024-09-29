@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cooking Ina</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Manjari' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Margarine' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <!-- Logo on the left -->
+                <div class="logo">
+                    <a href="index.html"><img src="assets/yci_logo.svg" alt="logo"></a>
+                </div>
+    
+                <!-- Navigation links in the center -->
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recipe.html">Recipe</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+    
+                <!-- Social media icons on the right -->
+                <div class="social-links">
+                    <a href="#"><img src="assets/icon_email.svg" alt="Email"></a>
+                    <a href="#"><img src="assets/icon_github.svg" alt="Github"></a>
+                    <a href="#"><img src="assets/icon_fb.svg" alt="Facebook"></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <div class="main-container"> <!-- Parent container for flex layout -->
+            <!-- Recipe Categories -->
+            <section id="categories">
+                <div class="img-btn-container">
+                    <div class="icon">
+                        <img src="assets/icon_categories.svg" alt="Categories" class="icon-img">
+                    </div>
+                    <div class="options">                            
+
+                        <div class="img-button-container">
+                            <a href="#">
+                                <img src="assets/btn_breakfast.jpg" alt="Potential Breakfast Recipes">
+                                <div class="bottom-left">Breakfast</div>
+                            </a>
+                        </div>
+                        <div class="img-button-container">
+                            <a href="#">
+                                <img src="assets/btn_lunch.jpg" alt="Potential Lunch Recipes">
+                                <div class="bottom-left">Lunch</div>
+                            </a>
+                        </div>
+                        <div class="img-button-container">
+                            <a href="#">
+                                <img src="assets/btn_dinner.png" alt="Potential Dinner Recipes">
+                                <div class="bottom-left">Dinner</div>
+                            </a>
+                        </div>
+                        <div class="img-button-container">
+                            <a href="#">
+                                <img src="assets/btn_snack.jpg" alt="Potential Snack Recipes">
+                                <div class="bottom-left">Snack</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Provided Recipes -->
+<section id="breakfast">
+    <div class="category-container">
+        <!-- Picked Category -->
+        <div class="category1-container">
+            <div class="category1" id="title1">
+                <p>Breakfast</p>
+            </div>
+            <!-- List of Breakfast Recipes -->
+            <div class="breakfast-section">
+                <div class="breakfast-cards" id="pics">
+                    <div class="bcard">
+                        <img src="assets/b_recipe1.jpg" alt="Lugaw">
+                        <p>Lugaw</p>
+                    </div>
+                    <div class="bcard">
+                        <img src="assets/b_recipe2.jpg" alt="Tortang Talong">
+                        <p>Tortang Talong</p>
+                    </div>
+                    <div class="bcard">
+                        <img src="assets/b_recipe3.jpg" alt="Champorado">
+                        <p>Champorado</p>
+                    </div>
+                </div>
+
+                <!-- Pagination Section inside #pics but below the food cards -->
+                <div class="pagination-container">
+                    <a href="#" class="arrow prev">
+                        <img src="assets/arrow_prev.svg" alt="Previous">
+                    </a>
+                    <span class="page-number">Page 1</span>
+                    <a href="#" class="arrow next">
+                        <img src="assets/arrow_next.svg" alt="Next">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+    </main>
+</body>
+</html>
