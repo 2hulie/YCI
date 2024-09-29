@@ -18,4 +18,4 @@ This project contains the following pages:
 
 To view the project, follow these steps:
 1. Open a web browser.
-2. Copy and paste this link into the address bar: [2hulie.github.io/YourCookingIna](https://2hulie.github.io/YourCookingIna)
+2. Copy and paste this link into the address bar: [2hulie.github.io/YCI](https://2hulie.github.io/YCI)
