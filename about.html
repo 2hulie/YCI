@@ -1,0 +1,159 @@
+<!-- 
+    Placeholder for Bootstrap components
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cooking Ina</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Manjari' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Margarine' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Team Section */
+        .team-section {
+            text-align: center;
+            padding: 8rem;
+            margin: 0 auto;
+            color: #FFFFFF;
+        }
+
+        .team-section h2 {
+            text-shadow: 1px 1px 10px rgba(111, 78, 64, 0.306); /* Add shadow with offset and blur */
+            letter-spacing: 5px; /* Add letter spacing */
+            font-size: 3rem;
+            font-family: 'Margarine', sans-serif; /* Fallback to sans-serif */
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        /* Team Members Container */
+        .team-members {
+            display: flex; /* Use Flexbox to arrange members side by side */
+            justify-content: center; /* Center the team members */
+            gap: 4rem; /* Increased space between the members */
+            flex-wrap: wrap; /* Wrap the members if the screen is too small */
+            max-width: 1500px; /* Limit the maximum width of the team section */
+            margin: 0 auto; /* Center the entire team section */
+        }
+
+        /* Individual Member Styling */
+        .member {
+            text-align: center;
+            flex: 1; /* Make each member take up an equal amount of space */
+            max-width: 300px; /* Increase the maximum width for more space */
+            padding: 1rem; /* Add padding inside the member container */
+            border-radius: 8px;
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        .member img {
+            width: 100%; /* Make the image take up full width of its container */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 50%; /* Circular images */
+            object-fit: cover; /* Cover the container without distortion */
+            margin-bottom: 1rem; /* Space below the image */
+            transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        .member img:hover {
+            transform: scale(1.1); /* Scale up the image to 110% on hover */
+        }
+
+        .member h3 {
+            margin: 0.5rem 0;
+            font-size: 2rem;
+            color: #61463E;
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        .member p {
+            font-size: 1.1rem;
+            color: #7D5A50;
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        /* Styling for BSIT Major text */
+        .major {
+            font-size: 2rem;
+            color: #B68972;
+            font-family: 'Mandali';
+            margin-top: 6rem;
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <!-- Logo on the left -->
+                <div class="logo">
+                    <a href="index.html"><img src="assets/yci_logo.svg" alt="logo"></a>
+                </div>
+
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Navigation links and social links in a container -->
+                <div class="menu-container">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="breakfast.html">Recipe</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+
+                    <div class="social-links">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lr.jesperas@mmdc.mcl.edu.ph" target="_blank"><img src="assets/icon_email.svg" alt="Email"></a>
+                        <a href="https://github.com/Sempuri" target="_blank"><img src="assets/icon_github.svg" alt="Github"></a>
+                        <a href="https://www.facebook.com/reiman.cristobal" target="_blank"><img src="assets/icon_fb.svg" alt="Facebook"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <section class="team-section">
+            <h2>- TEAM BEHIND YOUR COOKING INA -</h2><br><br>
+            <div class="team-members">
+                <div class="member">
+                    <img src="assets/icon_je.svg" alt="Jodienne Esperas">
+                    <h3>Jodienne Esperas</h3>
+                    <p>lr.jesperas@mmdc.mcl.edu.ph</p>
+                </div>
+                <div class="member">
+                    <img src="assets/icon_rec.svg" alt="Rei Cristobal">
+                    <h3>Rei Cristobal</h3>
+                    <p>lr.recristobal@mmdc.mcl.edu.ph</p>
+                </div>
+                <div class="member">
+                    <img src="assets/icon_rcc.svg" alt="Raya Carrillo">
+                    <h3>Raya Carrillo</h3>
+                    <p>lr.rccarrillo@mmdc.mcl.edu.ph</p>
+                </div>
+            </div>
+            <p class="major">BSIT Major in Software Development</p>
+        </section>
+    </main>
+    <script src="hamburger.js"></script>
+</body>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cooking Ina</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Manjari' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Margarine' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Dinner Section Styles */
+        #dinner {
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            text-align: center; /* Center text inside */
+            padding: 2rem; /* Responsive padding */
+            margin: 0 auto; /* Center horizontally */
+            flex: 1; /* Allow the breakfast section to grow and take available space */
+            box-sizing: border-box; /* Include padding in width calculations */
+            max-width: 600px; /* Set a maximum width for better control */
+            width: 100%; /* Ensure it takes the full width available */
+            transition: all 0.3s ease; /* Smooth transition for resizing */
+        }
+
+        /* Recipe section styling */
+        .dinner-section {
+            flex: 2; /* Allow it to take more space */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            margin-top: -3rem; /* Space above the recipe section */
+            width: 100%; /* Ensure it takes the full width available */
+            padding: 1rem; /* Add padding for better spacing */
+            box-sizing: border-box; /* Include padding in the element's total width and height */
+            transform: scale(0.86); /* Scale down all elements */
+            max-width: 100%; /* Ensure it doesn't exceed container width */
+            transition: all 0.3s ease; /* Smooth transition for resizing */
+        }
+
+        /* Responsive scaling */
+        @media (max-width: 1400px) {
+            #dinner {
+                margin-top: -1rem;
+                transform: scale(0.95); /* Scale down */
+            }
+
+            .dinner-section {
+                transform: scale(0.902); /* Scale down */
+                margin-top: -2rem;
+            }
+
+            #title1 {
+                transform: scale(1.046); /* Scale down */
+            }
+        }
+
+        /* Responsive scaling */
+        @media (max-width: 1200px) {
+            #dinner {
+                transform: scale(0.9); /* Scale down */
+            }
+
+            .dinner-section {
+                transform: scale(0.56); /* Scale down */
+                margin-top: -9rem;
+            }
+
+            #title1 {
+                transform: scale(1.45); /* Scale down */
+            }
+        }
+
+        @media (max-width: 768px) {
+            #dinner {
+                margin-top: -4rem;
+                transform: scale(0.8); /* Scale down */
+            }
+
+            .dinner-section {
+                transform: scale(0.4); /* Scale down */
+                margin-top: -13rem;
+            }
+
+            #title1 {
+                transform: scale(1.4); /* Scale down */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #dinner {
+                margin-top: -14rem;
+                transform: scale(0.4); /* Scale down */
+            }
+
+            .dinner-section {
+                transform: scale(0.7); /* Scale down */
+                margin-top: -2rem;
+            }
+
+            #title1 {
+                transform: scale(3.17); /* Scale down */
+            }
+        }
+
+        /* Recipe item styles */
+        .dcard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 30rem; /* Fixed width for each recipe item */
+            margin: 1rem; /* Space between each recipe item */
+            background-color: #f0f0f0; /* Background color for each recipe */
+            border-radius: 8px; /* Rounded corners */
+            padding: 1rem; /* Padding inside each recipe item */
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        /* First alternating background (FCDEC0 with 50% transparency) */
+        .dcard:nth-child(odd) {
+            background-color: rgba(252, 222, 192, 0.5); /* FCDEC0 with 50% transparency */
+            transition: transform 0.3s ease-in-out; /* Add smooth transition */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for even items */
+        }
+
+        /* Second alternating background (E7B59C with 50% transparency) */
+        .dcard:nth-child(even) {
+            background-color: rgba(231, 181, 156, 0.5); /* E7B59C with 50% transparency */
+            transition: transform 0.3s ease-in-out; /* Add smooth transition */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for even items */
+        }
+
+        /* Apply zoom effect on hover */
+        .dcard:hover {
+            transform: scale(1.05); /* Slightly zoom in by 5% */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+        }
+
+        /* Adjust the size of images */
+        .dcard img {
+            width: 24rem; /* Set the width of the image */
+            height: 30.9rem; /* Set the height of the image */
+            object-fit: cover; /* Maintain aspect ratio while covering the container */
+            border-radius: 8px; /* Rounded corners */
+            margin-bottom: 1rem; /* Add space below the image */
+            margin: 1 1rem; /* Add horizontal spacing on left and right */
+            transition: transform 0.3s ease-in-out; /* Add smooth transition */
+        }
+
+        /* Apply zoom effect on hover */
+        .dcard img:hover {
+            transform: scale(1.02); /* Slightly zoom in by 5% */
+        }
+
+        .dcard a:hover {
+            text-decoration: none;
+        }
+
+
+        /* Adjust margins for the <p> tags inside .recipe */
+        .dcard p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #7D5A50;
+            font-family: 'Manjari';
+            font-size: 1.7rem;
+        }
+
+        /* Pagination container inside #pics */
+        .pagination-container {
+            display: flex;
+            justify-content: center; /* Center the pagination */
+            align-items: center;
+            margin-top: -6rem; /* Space above the pagination */
+            gap: 1rem; /* Space between elements */
+            font-family: 'Mandali'; /* Font family for text */
+            width: 100%; /* Full width to match pics container */
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        /* Style for the arrow buttons */
+        .pagination-container .arrow img {
+            width: 24px; /* Adjust arrow size */
+            height: 24px;
+            cursor: pointer; /* Show pointer cursor on hover */
+        }
+
+        /* Style for page number text */
+        .pagination-container .page-number {
+            font-size: 1.5rem; /* Adjust the font size */
+            color: #B4846C; /* Match the color to the category title */
+        }
+
+        /* Active state for the Breakfast button */
+        .img-button-container a.active {
+            transform: scale(1.05); /* Slightly enlarge the button */
+            transition: all 0.3s ease; /* Smooth transition */
+        }
+
+        .img-button-container a.active img {
+            filter: brightness(0.9); /* Darken the image for emphasis */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <!-- Logo on the left -->
+                <div class="logo">
+                    <a href="index.html"><img src="assets/yci_logo.svg" alt="logo"></a>
+                </div>
+
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Navigation links and social links in a container -->
+                <div class="menu-container">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="breakfast.html">Recipe</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+
+                    <div class="social-links">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lr.jesperas@mmdc.mcl.edu.ph" target="_blank"><img src="assets/icon_email.svg" alt="Email"></a>
+                        <a href="https://github.com/Sempuri" target="_blank"><img src="assets/icon_github.svg" alt="Github"></a>
+                        <a href="https://www.facebook.com/reiman.cristobal" target="_blank"><img src="assets/icon_fb.svg" alt="Facebook"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <div class="main-container"> <!-- Parent container for flex layout -->
+            <!-- Recipe Categories -->
+            <section id="categories" class="categories-section">
+                <div class="img-btn-container">
+                    <div class="icon">
+                        <img src="assets/icon_categories.svg" alt="Categories" class="icon-img">
+                    </div>
+                    <div class="options">                            
+
+                        <div class="img-button-container">
+                            <a href="breakfast.html"> <!-- Add the active class and an ID for targeting -->
+                                <img src="assets/btn_breakfast.jpg" alt="Potential Breakfast Recipes">
+                                <div class="bottom-left">Breakfast</div>
+                            </a>
+                        </div>
+                        <div class="img-button-container">
+                            <a href="lunch.html">
+                                <img src="assets/btn_lunch.jpg" alt="Potential Lunch Recipes">
+                                <div class="bottom-left">Lunch</div>
+                            </a>
+                        </div>
+                        <div class="img-button-container">
+                            <a href="dinner.html"  class="active" id="dinner-button">
+                                <img src="assets/btn_dinner.png" alt="Potential Dinner Recipes">
+                                <div class="bottom-left">Dinner</div>
+                            </a>
+                        </div>
+                        <div class="img-button-container">
+                            <a href="snack.html">
+                                <img src="assets/btn_snack.jpg" alt="Potential Snack Recipes">
+                                <div class="bottom-left">Snack</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Provided Recipes -->
+            <section id="dinner">
+                <h2 class="category1" id="title1">Dinner</h2><!-- Use a heading tag for better semantics -->
+                <!-- List of Dinner Recipes -->
+                <div class="dinner-section">
+                    <div class="dinner-cards" id="pics">
+                        <div class="dcard">
+                            <a href="dinner1.html">
+                                <img src="assets/dinner1.jpg" alt="Crispy Pork Sisig">
+                                <p>Crispy Pork Sisig</p>
+                            </a>
+                        </div>
+                        <div class="dcard">
+                            <a href="dinner2.html">
+                                <img src="assets/dinner2.jpg" alt="Pork Dinakdakan">
+                                <p>Pork Dinakdakan</p>
+                            </a>
+                        </div>
+                        <div class="dcard">
+                            <a href="dinner3.html">
+                                <img src="assets/dinner3.png" alt="Fried Cream Dory">
+                                <p>Fried Cream Dory</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Pagination Section below the food cards -->
+                    <div class="pagination-container">
+                        <img src="assets/arrow_prev.svg" alt="Previous">
+                        <span class="page-number">Page 1</span>
+                        <img src="assets/arrow_next.svg" alt="Next">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="hamburger.js"></script>
+</body>
+</body>
+</html>
