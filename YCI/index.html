@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cooking Ina</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Manjari' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Margarine' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic anchor link styles */
+        a {
+            color: #7D5A50;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out; /* Smooth transition for the link */
+        }
+
+        /* Hover effect for the anchor links */
+        a:hover {
+            color: #E7B59C; /* Change the color on hover */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+
+        /* Style for links that wrap images */
+        a img {
+            transition: transform 0.3s ease-in-out; /* Smooth transition for transform */
+        }
+
+        a:hover img {
+            transform: scale(0.98); /* Slight zoom on hover */
+        }
+
+        #hero {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem; /* Add some space above the hero section */
+            border-radius: 5px; /* Optional: rounded corners */
+            color: #333; /* Text color for contrast */
+        }
+
+        #hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            margin-bottom: 1rem;
+        }
+
+        .search {
+            display: flex;
+            flex-direction: column; /* Stack children vertically */
+            align-items: center; /* Center children horizontally */
+            gap: 1rem; /* Space between search bar and buttons */
+            animation: fadeIn 0.5s; /* Apply animation */
+            position: relative; /* Set position to relative to allow absolute positioning of child elements */
+        }
+
+        .search input {
+            padding: 0.5rem;
+            width: 50em; /* This can remain in pixels or be set relative */
+            border-radius: 0em;
+            border: 1px solid #ced4da;
+            color: #7D5A50;
+            font-size: 1rem;
+            font-family: 'Mandali';
+            outline: none; /* Remove the outline */
+            flex-wrap: wrap;
+        }
+
+        /* Change font color for the placeholder */
+        .search input::placeholder {
+            color: #d1c1bd;
+            font-size: 1em;
+            opacity: 1; /* Make the placeholder fully opaque */
+        }
+
+        .button-container {
+            display: flex; /* Keep buttons in a row */
+            gap: 2rem; /* Space between buttons */
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        .search button {
+            position: relative; /* Needed for the pseudo-element */
+            background: transparent; /* Remove background color */
+            border: none; /* Remove default border */
+            cursor: pointer; /* Change cursor to pointer */
+            width: 13rem; /* Relative width of the button */
+            height: 4rem; /* Relative height of the button */
+            display: flex; /* Center the SVG vertically */
+            justify-content: center; /* Center the SVG horizontally */
+            align-items: center; /* Center the SVG vertically */
+        }
+
+        .search img {
+            width: 14em; /* Set the size of the SVG relative to the button */
+            height: 6rem;
+            transition: filter 0.3s ease; /* Smooth transition for filter */
+        }
+
+        /* Bright effect on hover */
+        .search button:hover img {
+            filter: brightness(1.1);
+        }
+
+        .suggestions-container {
+            border: none; /* Remove the border */
+            background: rgba(125, 90, 80, 0.6); /* Semi-transparent background */
+            position: absolute; /* Positioning */
+            left: 50%; /* Align it to the center horizontally */
+            transform: translateX(-50%); /* Shift back half of its width */
+            z-index: 10; /* Ensure it is on top */
+            max-height: 200px; /* Limit height */
+            overflow-y: auto; /* Scroll if needed */
+            width: 30rem; /* Set a specific width */
+            margin-top: 2.7rem; /* Margin from the top */
+            color: white; /* Change text color to white */
+        }
+
+        .suggestion-item {
+            padding: 10px; /* Spacing */
+            cursor: pointer; /* Pointer cursor */
+            color: white; /* Change text color to white for items */
+        }
+
+        .suggestion-item:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Optional highlight on hover */
+        }
+                
+        #recommendations {
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            text-align: center; /* Center text inside */
+            padding: 3rem; /* Padding around the content */
+            margin: 0 auto; /* Center the section itself */
+            max-width: 1500px; /* Optional: Limit maximum width for better appearance */
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+    
+        /* Chat bubble wrapper */
+        .chat-bubble-container {
+            display: flex;
+            align-items: flex-start; /* Align items to the top */
+            justify-content: center; /* Align the first bubble to the left */
+            width: 100%; /* Ensure full width for alignment */
+            position: relative; /* Necessary for positioning */
+        }
+
+        /* Icon container */
+        .icon-container {
+            display: flex;
+            align-items: flex-end; /* Align icon to the bottom of the bubble */
+            margin-right: 1rem; /* Space between icon and bubble */
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        /* Chat bubble styling */
+        .chat-bubble {
+            background-color: #f8f9fa;
+            border-radius: 10px 10px 10px 0;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            word-wrap: break-word;
+            box-sizing: border-box;
+            width: auto;
+            max-width: 80%;
+        }
+
+        /* Position the icon in the second chat bubble */
+        .chat-icon {
+            width: 70px; /* Size of the icon */
+            height: 70px; /* Size of the icon */
+            border-radius: 50%; /* Make it circular */
+            position: absolute; /* Absolutely positioned relative to the chat bubble */
+            bottom: -6px; /* Move the icon slightly outside the bubble at the bottom */
+            left: 3.3rem; /* Move the icon slightly outside the bubble to the left */
+            object-fit: cover; /* Ensure the image fits inside the circle */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow to the icon */
+        }
+
+        /* First chat bubble styling */
+        #text {
+            background-color: #f8f9fa; /* Background color of the bubble */
+            border-radius: 10px 10px 10px 0; /* Rounded corners */
+            padding: 1rem; /* Space inside the bubble */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            width: auto; /* Width will be based on content */
+            max-width: 80%; /* Maximum width for the bubble */
+            display: inline-block; /* Prevent the bubble from stretching horizontally */
+            word-wrap: break-word; /* Break text to prevent overflow */
+            box-sizing: border-box; /* Include padding and border */
+            color: #7D5A50;
+            font-family: 'Mandali';
+            font-size: 1.3rem;
+            padding-bottom: 1.1px;
+
+            margin-right: 29rem; /* Space between the two bubbles */
+        }
+
+        /* Second chat bubble styling */
+        #images {
+            display: flex;
+            flex-direction: column; /* Stack recipe images vertically */
+            padding: 2rem; /* Space inside the bubble */
+            background-color: #f8f9fa; /* Background color of the bubble */
+            border-radius: 10px 10px 10px 0; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            width: auto; /* Width will be based on content */
+            max-width: 80%; /* Maximum width for the bubble */
+            box-sizing: border-box; /* Include padding and border */
+            padding-bottom: 1.7rem;
+        }
+
+        /* Recipes container to arrange images side by side */
+        .recipes {
+            display: flex;
+            justify-content: center; /* Center the recipe items */
+            gap: 1rem; /* Space between recipe items */
+            flex-wrap: wrap; /* Wrap if there are too many images */
+        }
+
+        /* Recipe item styles */
+        .recipe {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 240px; /* Fixed width for each recipe item */
+            margin-bottom: 1rem; /* Add space between each recipe item */
+            background-color: #f0f0f0; /* Background color for each recipe */
+            border-radius: 8px; /* Rounded corners */
+            padding: 1rem; /* Padding inside each recipe item */
+        }
+
+        /* First alternating background (FCDEC0 with 50% transparency) */
+        .recipe:nth-child(odd) {
+            background-color: rgba(252, 222, 192, 0.5); /* FCDEC0 with 50% transparency */
+            transition: transform 0.3s ease-in-out; /* Add smooth transition */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for odd items */
+        }
+
+        /* Second alternating background (E7B59C with 50% transparency) */
+        .recipe:nth-child(even) {
+            background-color: rgba(231, 181, 156, 0.5); /* E7B59C with 50% transparency */
+            transition: transform 0.3s ease-in-out; /* Add smooth transition */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for even items */
+        }
+
+        /* Apply zoom effect on hover */
+        .recipe:hover {
+            transform: scale(1.05); /* Slightly zoom in by 5% */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+        }
+
+        /* Adjust the size of images */
+        .recipe img {
+            width: 210px;
+            height: 270px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Adjust margins for the <p> tags inside .recipe */
+        .recipe p {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            color: #7D5A50;
+            font-family: 'Mandali';
+            font-size: 1.3rem;
+
+        }
+        /* Override Bootstrap button styles */
+        .svg-button {
+            width: 8rem; /* Keep your desired width */
+            height: 3rem; /* Keep your desired height */
+            border: none; /* Remove any border */
+            cursor: pointer; /* Change cursor to pointer */
+            background: transparent; /* Keep the background transparent */
+            outline: none; /* Remove the outline */
+        }
+
+        .svg-button:focus {
+            outline: none; /* Remove the outline on focus */
+        }
+
+        .svg-button img {
+            width: 100%; /* Make the SVG fill the button */
+            height: auto; /* Maintain aspect ratio */
+            transition: filter 0.3s ease; /* Smooth transition for filter */
+        }
+
+        .svg-button:hover img {
+            filter: brightness(1.1); /* Darken the SVG on hover */
+        }
+
+        @media (max-width: 1200px) {
+            .search input {
+                width: 80%; /* Make the input field 80% of the screen width */
+                font-size: 0.9rem; /* Slightly reduce the font size */
+            }
+
+            #text {
+                position: relative;
+                margin: auto;
+            }
+
+            .chat-icon {
+                left: -1.3rem;
+            }
+        }
+
+         /* For tablets (1024px and below) */
+        @media (max-width: 1024px) {
+            .search input {
+                width: 80%; /* Make the input field 80% of the screen width */
+                font-size: 0.9rem; /* Slightly reduce the font size */
+            }
+
+            .button-container {
+                flex-direction: column; /* Stack buttons vertically on smaller screens */
+                width: 80%; /* Adjust the button container width */
+                align-items: center; /* Ensure buttons stay centered */
+            }
+
+            #text {
+                position: relative;
+                margin: auto;
+            }
+
+            .chat-icon {
+                margin-left: -1.3rem;
+            }
+        }
+
+        /* For mobile devices (768px and below) */
+        @media (max-width: 768px) {
+            .search input {
+                width: 90%; /* Increase input field to 90% of screen width */
+                font-size: 0.85rem; /* Further reduce font size */
+            }
+
+            .button-container {
+                flex-direction: column; /* Stack buttons vertically */
+                gap: 1.5rem; /* Reduce the space between buttons */
+                width: 90%; /* Adjust the button container width */
+                align-items: center; /* Keep buttons centered */
+            }
+
+            #text {
+                position: relative;
+                margin: auto;
+            }
+
+            .chat-icon {
+                margin-left: -3rem;
+            }
+        }
+
+        /* For small mobile devices (480px and below) */
+        @media (max-width: 480px) {
+            .search input {
+                width: 95%; /* Make the input field nearly full width */
+                font-size: 0.8rem; /* Further reduce font size */
+            }
+
+            .button-container {
+                flex-direction: column; /* Ensure buttons are stacked vertically */
+                gap: 1rem; /* Reduce the gap further between buttons */
+                width: 95%; /* Adjust the button container width */
+                align-items: center; /* Keep buttons centered */
+            }
+            
+            #text {
+                position: relative;
+                margin: auto;
+            }
+
+            .recipe {
+                transform: scale(0.8); /* Scale down to 80% of the original size */
+                margin-bottom: -1rem; /* Optional: reduce space between items */
+                margin-top: -3rem;
+            }
+
+            .chat-icon {
+                margin-left: -3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <!-- Logo on the left -->
+                <div class="logo">
+                    <a href="index.html"><img src="assets/yci_logo.svg" alt="logo"></a>
+                </div>
+
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Navigation links and social links in a container -->
+                <div class="menu-container">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="breakfast.html">Recipe</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+
+                    <div class="social-links">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lr.jesperas@mmdc.mcl.edu.ph" target="_blank"><img src="assets/icon_email.svg" alt="Email"></a>
+                        <a href="https://github.com/Sempuri" target="_blank"><img src="assets/icon_github.svg" alt="Github"></a>
+                        <a href="https://www.facebook.com/reiman.cristobal" target="_blank"><img src="assets/icon_fb.svg" alt="Facebook"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <section id="hero">
+            <div class="search">
+                <input type="text" id="search-input" placeholder="Search for recipe" />
+                <div id="suggestions" class="suggestions-container"></div>
+                
+                <div class="button-container">
+                    <button id="surprise-button" class="svg-button">
+                        <img src="assets/btn_surpriseMe.svg" alt="Surprise Me!">
+                    </button>
+                    
+                    <button id="search-button" class="svg-button">
+                        <img src="assets/btn_search.svg" alt="Search">
+                    </button>
+                </div>
+            </div>
+        </section>
+
+       <!-- Recipe Recommendations -->
+       <section id="recommendations">
+        <div class="chat-container">
+            <!-- First chat bubble for text -->
+            <div class="chat-bubble-container">
+                <div class="chat-bubble" id="text">
+                    <p>Have you tried cooking this, anak?</p>
+                </div>
+            </div>
+    
+            <!-- Second chat bubble for images -->
+            <div class="chat-bubble-container">
+                <div class="chat-bubble" id="images">
+                    <div class="recipes">
+                        <div class="recipe">
+                            <a href="breakfast1.html">
+                                <img src="assets/breakfast1.jpg" alt="Goto Lugaw">
+                            </a>
+                            <p>Goto Lugaw</p>
+                        </div>
+                        <div class="recipe">
+                            <a href="lunch1.html">
+                                <img src="assets/lunch1.jpg" alt="Sinigang na Baboy">
+                            </a>
+                            <p>Sinigang na Baboy</p>
+                        </div>
+                        <div class="recipe">
+                            <a href="dinner1.html">
+                                <img src="assets/dinner1.jpg" alt="Crispy Pork Sisig">
+                            </a>
+                            <p>Crispy Pork Sisig</p>
+                        </div>
+                    </div>
+                </div>
+                <img src="assets/icon_ina.svg" alt="Icon" class="chat-icon">
+            </div>
+        </div>
+    </section>
+    </main>
+    <script src="surprise.js"></script>
+    <script src="hamburger.js"></script>
+    <script src="search.js"></script>
+</body>
+</html>

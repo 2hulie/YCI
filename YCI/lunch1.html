@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cooking Ina</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Manjari' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Margarine' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Breakfast Section Styles */
+        #lunch1 {
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            text-align: center; /* Center text inside */
+            padding: 2rem; /* Responsive padding */
+            margin: 0 auto; /* Center horizontally */
+            flex: 1; /* Allow the breakfast section to grow and take available space */
+            box-sizing: border-box; /* Include padding in width calculations */
+            max-width: 600px; /* Set a maximum width for better control */
+            width: 100%; /* Ensure it takes the full width available */
+            transition: all 0.3s ease; /* Smooth transition for resizing */
+        }
+
+        /* Recipe section styling */
+        .lunch1-section {
+            flex: 1; /* Allow it to take more space */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            width: 100%; /* Ensure it takes the full width available */
+            padding: 1.5rem; 
+            box-sizing: border-box; /* Include padding in the element's total width and height */
+            transform: scale(0.86); /* Scale down all elements */
+            max-width: 100%; /* Ensure it doesn't exceed container width */
+            transition: all 0.3s ease; /* Smooth transition for resizing */
+        }
+
+        #title1 {
+            white-space: nowrap;
+        }
+
+        /* Responsive scaling */
+        @media (max-width: 1400px) {
+            #lunch1 {
+                margin-top: -1rem;
+                transform: scale(0.95); /* Scale down */
+            }
+
+            .lunch1-section {
+                transform: scale(0.902); /* Scale down */
+                margin-top: -1rem;
+            }
+
+            #title1 {
+                transform: scale(1.046); /* Scale down */
+            }
+        }
+
+        /* Responsive scaling */
+        @media (max-width: 1200px) {
+            #lunch1 {
+                transform: scale(0.9); /* Scale down */
+            }
+
+            .lunch1-section {
+                transform: scale(0.56); /* Scale down */
+                margin-top: -7rem;
+            }
+
+            #title1 {
+                transform: scale(1.45); /* Scale down */
+            }
+        }
+
+        @media (max-width: 768px) {
+            #lunch1 {
+                margin-top: -4rem;
+                transform: scale(0.8); /* Scale down */
+            }
+
+            .lunch1-section {
+                transform: scale(0.4); /* Scale down */
+                margin-top: -11rem;
+            }
+
+            #title1 {
+                transform: scale(1.4); /* Scale down */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #lunch1 {
+                margin-top: -14rem;
+                transform: scale(0.4); /* Scale down */
+            }
+
+            .lunch1-section {
+                transform: scale(0.7); /* Scale down */
+                margin-top: 1rem;
+            }
+
+            #title1 {
+                transform: scale(3.17); /* Scale down */
+            }
+        }
+
+        /* Adjust #pics */
+        #pics {
+            display: flex;
+            flex-direction: row; /* Stack recipe images horizontally */
+            padding: 2rem; /* Space inside the bubble */
+            background-color: #f8f9fa; /* Background color of the bubble */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            width: 87rem; /* Allow width to adjust based on content */
+            box-sizing: border-box; /* Include padding and border */
+            justify-content: center; /* Center the items within the container */
+            animation: fadeIn 0.5s; /* Apply animation */
+            margin-top: -4rem;
+        }
+
+        /* Recipe item styles */
+        .l1card {
+            display: flex;
+            flex-direction: row; 
+            align-items: flex-start; 
+            margin: 0.5rem; /* Keep or reduce margin around the card */
+            border-radius: 10rem; 
+            padding: 0.5rem; /* Reduce padding inside the card */
+            gap: 1rem; /* Adjust gap between image and content */
+        }
+
+        /* Adjust the size of images */
+        .l1card img {
+            width: 20rem; /* Keep the reduced image width */
+            height: 40rem; /* Automatically adjust height */
+            object-fit: cover; 
+            border-radius: 8px; 
+            margin: 0; /* No margin */
+            transition: transform 0.3s ease-in-out; 
+            margin-right: 2rem;
+        }
+
+        .l1card-content {
+            flex: 1; /* Allow the content to take up remaining space */
+            text-align: left; /* Align text to the left */
+            display: flex;
+            flex-direction: column;
+            color: #7D5A50;
+            font-family: 'Mandali';
+        }
+
+        /* H3 styling for headings in the lunch1-cards */
+        .l1card-content h3 {
+            font-family: 'Manjari', sans-serif; /* Set a specific font for headings */
+            color: #7D5A50; /* Use a consistent color for headings */
+            margin-top: 1rem; /* Add space above the heading */
+            margin-bottom: 0.5rem; /* Space below the heading */
+            font-size: 2.1rem; /* Set a standard font size */
+            font-weight: bold; /* Make the text bold for emphasis */
+            text-align: left; /* Align text to the left */
+        }
+
+        /* Step-by-step procedure styling */
+        .l1card-content ol {
+            padding-left: 1.5rem; /* Add padding to the left for numbers */
+        }
+
+        /* Parent container to hold ingredients and tools side by side */
+        .ingredients-tools-container {
+            display: flex; /* Flexbox for horizontal alignment */
+            justify-content: space-between; /* Add space between ingredients and tools */
+            gap: 2rem; /* Space between ingredients and tools */
+        }
+
+        /* Ensure that both ingredients and tools take equal space */
+        .ingredients, .tools {
+            flex: 1; /* Allow both sections to take equal width */
+        }
+
+        .ingredients h3, .tools h3 {
+            margin-bottom: 0.5rem; /* Space below section titles */
+        }
+
+        /* Adjust the list styling */
+        .ingredients ul, .tools ul {
+            list-style-type: disc; /* Add bullet points */
+            padding-left: 1.5rem; /* Add padding to the left for bullet points */
+        }
+
+        /* Active state for the Breakfast button */
+        .img-button-container a.active {
+            transform: scale(1.05); /* Slightly enlarge the button */
+            transition: all 0.3s ease; /* Smooth transition */
+        }
+
+        .img-button-container a.active img {
+            filter: brightness(0.9); /* Darken the image for emphasis */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <!-- Logo on the left -->
+                <div class="logo">
+                    <a href="index.html"><img src="assets/yci_logo.svg" alt="logo"></a>
+                </div>
+
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Navigation links and social links in a container -->
+                <div class="menu-container">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="breakfast.html">Recipe</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+
+                    <div class="social-links">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lr.jesperas@mmdc.mcl.edu.ph" target="_blank"><img src="assets/icon_email.svg" alt="Email"></a>
+                        <a href="https://github.com/Sempuri" target="_blank"><img src="assets/icon_github.svg" alt="Github"></a>
+                        <a href="https://www.facebook.com/reiman.cristobal" target="_blank"><img src="assets/icon_fb.svg" alt="Facebook"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+         <div class="main-container"> <!-- Parent container for flex layout -->
+            <!-- Recipe Categories -->
+            <section id="categories" class="categories-section">
+                <div class="img-btn-container">
+                    <div class="icon">
+                        <img src="assets/icon_categories.svg" alt="Categories" class="icon-img">
+                    </div>
+                    <div class="options">                            
+
+                        <div class="img-button-container">
+                            <a href="breakfast.html"> <!-- Add the active class and an ID for targeting -->
+                                <img src="assets/btn_breakfast.jpg" alt="Potential Breakfast Recipes">
+                                <div class="bottom-left">Breakfast</div>
+                            </a>
+                        </div>
+                        <div class="img-button-container">
+                            <a href="lunch.html" class="active" id="lunch-button">
+                                <img src="assets/btn_lunch.jpg" alt="Potential Lunch Recipes">
+                                <div class="bottom-left">Lunch</div>
+                            </a>
+                        </div>
+                        <div class="img-button-container">
+                            <a href="dinner.html">
+                                <img src="assets/btn_dinner.png" alt="Potential Dinner Recipes">
+                                <div class="bottom-left">Dinner</div>
+                            </a>
+                        </div>
+                        <div class="img-button-container">
+                            <a href="snack.html">
+                                <img src="assets/btn_snack.jpg" alt="Potential Snack Recipes">
+                                <div class="bottom-left">Snack</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Lunch1 Recipe -->
+            <section id="lunch1">
+                <h2 class="category1" id="title1">Sinigang na Baboy</h2><!-- Use a heading tag for better semantics -->
+                <!-- Contents -->
+                <div class="lunch1-section">
+                    <div class="lunch1-cards" id="pics">
+                        <div class="l1card">
+                            <img src="assets/lunch1.jpg" alt="Sinigang na Baboy">
+                            <!-- Content on the right -->
+                            <div class="l1card-content">
+                                <!-- Ingredients and Tools container -->
+                                <div class="ingredients-tools-container">
+                                    <!-- Ingredients -->
+                                    <div class="ingredients">
+                                        <h3>Ingredients</h3>
+                                        <ul>
+                                            <li>Lorem ipsum</li>
+                                            <li>Dolor sit amet</li>
+                                            <li>Consectetur</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Tools -->
+                                    <div class="tools">
+                                        <h3>Tools</h3>
+                                        <ul>
+                                            <li>Duis aute irure dolor</li>
+                                            <li>Reprehenderit in voluptate</li>
+                                            <li>Velit esse cillum dolore</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Step-by-Step Procedure -->
+                                <br><h3>Step-by-Step Procedure</h3>
+                                <ol>
+                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                    <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+                                    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                                    <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="hamburger.js"></script>
+</body>
+</body>
+</html>

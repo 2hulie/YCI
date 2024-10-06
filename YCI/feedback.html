@@ -1,0 +1,354 @@
+<!-- 
+    Placeholder for Bootstrap components
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cooking Ina</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Manjari' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Mandali' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Margarine' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Chat container styles */
+        .chat-container1 {
+            display: flex;
+            flex-direction: column; /* Stack bubbles vertically */
+            align-items: center; /* Center bubbles horizontally */
+            gap: 1rem; /* Space between bubbles */
+            max-width: 1200px; /* Maximum width for large screens */
+            margin: 0 auto; /* Center the container */
+        }
+
+        /* Chat bubble wrapper */
+        .chat-bubble-container {
+            display: flex;
+            align-items: center; /* Align items to the top */
+            justify-content: flex-start; /* Align the first bubble to the left */
+            width: 100%; /* Ensure full width for alignment */
+            position: relative; /* Necessary for positioning */
+            margin-right: -30em;
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        /* Chat bubble styling */
+        .chat-bubble {
+            background-color: #f8f9fa;
+            border-radius: 10px 10px 10px 0;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            word-wrap: break-word;
+            box-sizing: border-box;
+            max-width: 80%;
+            color: #7D5A50;
+            font-family: 'Mandali';
+            font-size: 1.3rem;
+        }
+
+        /* Position the icon in the second chat bubble */
+        .chat-icon {
+            width: 70px; /* Size of the icon */
+            height: 70px; /* Size of the icon */
+            border-radius: 50%; /* Make it circular */
+            position: absolute; /* Absolutely positioned relative to the chat bubble */
+            bottom: -6px; /* Move the icon slightly outside the bubble at the bottom */
+            left: -100px; /* Move the icon slightly outside the bubble to the left */
+            object-fit: cover; /* Ensure the image fits inside the circle */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow to the icon */
+            margin-right: 10px; /* Add some space between the icon and the chat bubble */
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        /* First chat bubble styling */
+        #text {
+            background-color: #f8f9fa; /* Background color of the bubble */
+            border-radius: 10px 10px 10px 0; /* Rounded corners */
+            padding: 1rem; /* Space inside the bubble */
+            padding-bottom: 1.1px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            width: auto; /* Width will be based on content */
+            max-width: 80%; /* Maximum width for the bubble */
+            display: inline-block; /* Prevent the bubble from stretching horizontally */
+            word-wrap: break-word; /* Break text to prevent overflow */
+            box-sizing: border-box; /* Include padding and border */
+            color: #7D5A50;
+            font-family: 'Mandali';
+            font-size: 1.3rem;
+            
+            /* Remove margin-right to align the bubbles */
+            /*margin-right: 0;*/
+
+            margin-right: 465px; /*Space between the two bubbles */
+        }
+
+        /* Adjust container for proper centering */
+        .feedback-chat {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the chat bubbles in the middle */
+            justify-content: center;
+            padding: 20px;
+            margin-top: 10rem;
+        }    
+
+        #feedback-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        .feedback-form textarea {
+            width: 100%; /* Take full width of the parent container */
+            max-width: 35em; /* Maximum width to avoid stretching too much */
+            height: 10em; /* Keep the height as is */
+            min-height: 3em; /* Minimum height to prevent it from being too small */
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #cfbcbc;
+            color: #7D5A50; /* Text color for the textarea */
+            font-family: 'Mandali';
+            font-size: 1.2rem; /* Slightly reduce font size for better responsiveness */
+            margin-top: 3rem;
+            resize: vertical; /* Allow vertical resizing */
+            outline: none; /* Remove the outline */
+        }
+
+        /* Placeholder styling */
+        .feedback-form textarea::placeholder {
+            color: #d1c1bd; /* Change to your desired placeholder color */
+            font-size: 1.3rem; 
+            /* Adjust the font size of the placeholder */
+            opacity: 1; /* Ensure the placeholder is fully opaque */
+        }
+
+        .feedback-form button {
+            margin-top: 15px;
+            margin-left: 30.5rem;
+            width: 8rem; /* Relative width of the button */
+            height: 3rem; /* Relative height of the button */
+            border: none;
+            cursor: pointer;
+            background: transparent; /* Keep the background transparent */
+            outline: none; /* Remove outline */
+            position: relative; /* Needed for the absolute positioning of the img */
+            animation: fadeIn 0.5s; /* Apply animation */
+        }
+
+        .feedback-form button img {
+            width: 11rem; /* Make the SVG fill the button */
+            height: 3rem; /* Make the SVG fill the button */
+            transition: filter 0.3s ease; /* Smooth transition for filter */
+        }
+
+        /* Hover state on the button */
+        .feedback-form button:hover img {
+            filter: brightness(1.5); /* Increase brightness of the image when hovering */
+        }
+
+        /* For tablets (1248px and below) */
+        @media (max-width: 1248px) {
+            .feedback-form textarea {
+                width: 90%; /* Reduce the width a bit */
+                font-size: 1.1rem; /* Reduce font size slightly */
+                align-items: center;
+            }
+
+            .chat-bubble-container {
+                margin-left: -10rem;
+            }
+
+            .feedback-form button {
+                margin-top: 15px;
+                margin-left: 27rem;
+                width: 8rem; /* Relative width of the button */
+                height: 3rem; /* Relative height of the button */
+                border: none;
+                cursor: pointer;
+                background: transparent; /* Keep the background transparent */
+                outline: none; /* Remove outline */
+                margin-bottom: 10rem;
+            }
+        }
+
+         /* For tablets (1024px and below) */
+         @media (max-width: 1024px) {
+            .feedback-form textarea {
+                width: 90%; /* Reduce the width a bit */
+                font-size: 1.1rem; /* Reduce font size slightly */
+                align-items: center;
+            }
+
+            .chat-bubble-container {
+                margin-left: -15rem;
+            }
+
+            .feedback-form button {
+                margin-top: 15px;
+                margin-left: 27rem;
+                width: 8rem; /* Relative width of the button */
+                height: 3rem; /* Relative height of the button */
+                border: none;
+                cursor: pointer;
+                background: transparent; /* Keep the background transparent */
+                outline: none; /* Remove outline */
+                margin-bottom: 10rem;
+            }
+        }
+
+        /* For mobile devices (900px and below) */
+        @media (max-width: 900px) {
+            .feedback-form textarea {
+                width: 85%; /* Make textarea smaller for mobiles */
+                font-size: 1rem; /* Further reduce font size */
+                align-items: center;
+            }
+
+            .chat-bubble-container {
+                margin-left: -15rem;
+            }
+
+            .feedback-form button {
+                margin-top: 15px;
+                margin-left: 23.5rem;
+                width: 8rem; /* Relative width of the button */
+                height: 3rem; /* Relative height of the button */
+                border: none;
+                cursor: pointer;
+                background: transparent; /* Keep the background transparent */
+                outline: none; /* Remove outline */
+            }
+        }
+
+        /* For mobile devices (768px and below) */
+        @media (max-width: 768px) {
+            .feedback-form textarea {
+                width: 85%; /* Make textarea smaller for mobiles */
+                font-size: 1rem; /* Further reduce font size */
+                align-items: center;
+            }
+
+            .chat-bubble-container {
+                margin-left: -15rem;
+            }
+
+            .feedback-form button {
+                margin-top: 15px;
+                margin-left: 15rem;
+                width: 8rem; /* Relative width of the button */
+                height: 3rem; /* Relative height of the button */
+                border: none;
+                cursor: pointer;
+                background: transparent; /* Keep the background transparent */
+                outline: none; /* Remove outline */
+                margin-bottom: 10rem;
+            }
+        }
+
+        /* For small mobile devices (480px and below) */
+        @media (max-width: 480px) {
+            .feedback-form textarea {
+                width: 80%; /* Narrower for small screens */
+                font-size: 0.9rem; /* Adjust font size for readability */
+                align-items: center;
+            }
+
+            .chat-bubble-container {
+                margin-left: -15rem;
+            }
+
+            .feedback-form button {
+                margin-top: 15px;
+                margin-left: 10.5rem;
+                width: 8rem; /* Relative width of the button */
+                height: 3rem; /* Relative height of the button */
+                border: none;
+                cursor: pointer;
+                background: transparent; /* Keep the background transparent */
+                outline: none; /* Remove outline */
+                margin-bottom: 10rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <!-- Logo on the left -->
+                <div class="logo">
+                    <a href="index.html"><img src="assets/yci_logo.svg" alt="logo"></a>
+                </div>
+
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Navigation links and social links in a container -->
+                <div class="menu-container">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="breakfast.html">Recipe</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+
+                    <div class="social-links">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lr.jesperas@mmdc.mcl.edu.ph" target="_blank"><img src="assets/icon_email.svg" alt="Email"></a>
+                        <a href="https://github.com/Sempuri" target="_blank"><img src="assets/icon_github.svg" alt="Github"></a>
+                        <a href="https://www.facebook.com/reiman.cristobal" target="_blank"><img src="assets/icon_fb.svg" alt="Facebook"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <div class="chat-container1 feedback-chat">
+            <!-- First chat bubble for text -->
+            <div class="chat-bubble-container feedback-bubble">
+                <div class="chat-bubble" id="text">
+                     <p>Is there anything you’d like to share or suggest, anak?</p>
+                </div>
+            </div>
+            <!-- Second chat bubble  -->
+            <div class="chat-bubble-container feedback-bubble">
+                <img src="assets/icon_ina.svg" alt="Icon" class="chat-icon">
+                <div class="chat-bubble" id="text">
+                    <p>Don’t be shy, I’m here to listen to you <3</p>
+                </div>
+            </div>
+        </div>  
+        <div class="feedback-form">
+            <form id="feedback-form" action="https://formspree.io/f/mldernaj" method="POST">
+            <!-- Textarea for feedback -->
+            <textarea id="feedback-text" name="feedback" placeholder="Type here your feedback or suggestions" required></textarea>
+            
+            <!-- Send button -->
+            <button id="send-button" class="svg-button">
+                <img src="assets/btn_send.svg" alt="Send">
+            </button>
+            </form>
+        </div>
+    </main>
+    <script src="feedbackform.js"></script>
+    <script src="hamburger.js"></script>
+</body>
+</body>
+</html>

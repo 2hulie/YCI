@@ -1,0 +1,382 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Define the fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Optional: slide up */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    font-family: 'Manjari';
+    font-size: 22px;
+    line-height: 1.6;
+    background: linear-gradient(to bottom, #FCDEC0, #E5B299); /* Gradient background */
+    color: #333;
+    margin: 0; /* No default margin */
+    min-height: 100vh; /* Ensure body takes full height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Nav Styles */
+nav {
+    background-color: #FFFFFF;
+    padding: 1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow below the nav */
+    position: relative; /* Make sure the nav is positioned correctly */
+    z-index: 1000; /* Ensures the nav stays on top of content */
+}
+
+/* Flexbox container for the nav elements */
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spreads logo, nav links, and social icons across */
+}
+
+.logo img {
+    width: 200px; /* Adjust the logo size */
+    height: auto;
+}
+
+/* Center navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Adds space between the links */
+    margin: 0 auto; /* Centers the nav links */
+    justify-content: center; /* Centers the links within their flex container */
+    flex: 1; /* Allows the links to take available space */
+}
+
+.nav-links li {
+    display: inline-block;
+    position: relative; /* Allows pseudo-element to be positioned relative to the link */
+}
+
+.nav-links li a {
+    color: #7D5A50;
+    text-decoration: none;
+    padding: 1rem 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0; /* Start with no width */
+    height: 2px; /* Thickness of the line */
+    background-color: #7D5A50; /* Line color */
+    left: 50%; /* Start at the center */
+    bottom: 0; /* Position at the bottom of the link */
+    transform: translateX(-50%) translateY(-10px); /* Ensure the line is centered */
+    transition: width 0.3s ease-in-out; /* Animate width */
+}
+
+.nav-links li a:hover::after {
+    width: 80%; /* Expand the line to full width on hover */
+}
+
+/* Social links on the right */
+.social-links {
+    display: flex;
+    gap: 1rem; /* Adds space between the social icons */
+}
+
+.social-links a img {
+    width: 2em; /* Adjust the size of the social icons */
+    height: auto;
+    border-radius: 100%;
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.hamburger-menu span {
+    height: 3px;
+    width: 25px;
+    background-color: #7D5A50;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Active state for hamburger menu */
+.hamburger-menu.active span:nth-child(1) {
+    opacity: 0; /* Hide the top line */
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    width: 1.9rem; /* Make the middle line wider to create a minus */
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    opacity: 0; /* Hide the bottom line */
+}
+
+/* Menu Container Styles */
+.menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the navigation links */
+    width: 100%;
+}
+
+@media (max-width: 1028px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .menu-container {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+        position: absolute;
+        top: 99px;
+        left: 0;
+        z-index: 1;
+    }
+
+    .menu-container.active {
+        display: flex;
+        box-shadow: 
+            0 2px 5px rgba(0, 0, 0, 0.2), /* Shadow below the menu container */
+            0 -2px 0 rgba(0, 0, 0, 0.2) inset; /* Shadow inside the top border */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 2px 0;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        margin-top: 15px;
+        margin-bottom: 40px;
+    }
+}
+
+/* Chat container styles */
+.chat-container {
+    display: flex;
+    flex-direction: column; /* Stack bubbles vertically */
+    align-items: center; /* Center bubbles horizontally */
+    gap: 1rem; /* Space between bubbles */
+    width: 80%; /* Responsive width */
+    max-width: 1200px; /* Maximum width for large screens */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Main container to control both sections */
+.main-container {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center; /* Center children horizontally */
+    margin: 0 auto; /* Center the main container */
+    padding: 2rem; /* Optional padding for the main container */
+    /*transform: scale(0.7); /* Scale down all elements to 90% of their original size */
+    /*transform-origin: top; /* Set the origin of scaling to the top of the container */
+    /* Optional: Adjusting to keep it centered */
+    width: 100%; /* Ensure it stays full width after scaling */
+    max-width: 100rem; /* Max width to keep it from stretching too wide */
+}
+
+/* Categories container styles */
+#categories {
+    background-color: #FDF9F7; /* Background color */
+    border-radius: 150px 150px 10px 10px; /* Rounded corners */
+    padding: 2rem;
+    padding-bottom: 2rem; /* Space at the bottom */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center child elements */
+    justify-content: center; /* Center child elements */
+    margin: 2rem auto; /* Center and set top margin */
+    max-width: 100%; /* Ensure it doesn't exceed container width */
+}
+
+/* Animation class */
+.fade-in {
+    animation: fadeIn 0.5s; /* Apply animation */
+}
+
+/* Additional CSS to disable animation */
+.no-animation {
+    animation: none !important; /* Override any animations */
+}
+
+/* Image button container styling */
+.img-button-container {
+    display: flex; /* Use flexbox to align elements */
+    flex-direction: row; /* Align items horizontally */
+    align-items: center; /* Center elements vertically */
+    justify-content: center; /* Center elements horizontally */
+    position: relative; /* Keep it in the flow of the document */
+    margin-top: 1rem; /* Add some space above the options */
+    z-index: 1; /* Ensure it’s on top of the background */
+}
+
+/* Style for images in the button container */
+.img-button-container img {
+    transition: filter 0.3s ease; /* Smooth transition for the filter */
+    filter: brightness(0.5); /* Darken the image */
+}
+
+/* Hover state for images */
+.img-button-container:hover img {
+    filter: brightness(0.7); /* Remove dark effect on hover */
+}
+
+.icon {
+    width: 100%; /* Use full width of the parent container */
+    max-width: 500px; /* Limit maximum width */
+    height: auto; /* Auto height to maintain aspect ratio */
+    margin: auto; /* Center the icon horizontally */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.icon-img {
+    width: auto; /* Allow width to be determined by aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 190px; /* Prevent exceeding maximum height */
+    max-width: 100%; /* Ensure it doesn't exceed the parent */
+}
+
+/* Ensures that images within the icon scale responsively */
+.icon img {
+    width: 100%; /* Full width of the icon container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Block display to avoid extra space below */
+}
+
+/* Options styling */
+.options {
+    display: flex; /* Ensure flex display */
+    flex-direction: row; /* Align items horizontally */
+    align-items: center; /* Center items vertically */
+    gap: 1rem; /* Space between items */
+    margin-top: 1rem; /* Space above the options section */
+}
+
+/* Keep the size of option images unchanged */
+.options img {
+    width: 270px; /* Maintain previous width */
+    height: 190px; /* Maintain previous height */
+    object-fit: cover; /* Ensure the image covers the area */
+    border-radius: 10px; /* Rounded corners for the option images */
+    max-width: 100%; /* Optional: Ensure it doesn't exceed the parent */
+    max-height: 190px; /* Prevent images from exceeding set height */
+}
+
+/* Reset bullets for all elements, including the bottom-left text */
+.bottom-left {
+    list-style: none; /* Remove bullet points if any */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    position: absolute; /* Position it absolutely if needed */
+    bottom: 8px; /* Original position */
+    left: 16px; /* Original position */
+    color: #FFFFFF; /* Text color */
+    padding: 5px; /* Padding for the text */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Manjari'; /* Your desired font */
+    font-size: 1.5rem; /* Font size */
+    transition: transform 0.3s ease; /* Smooth transition for rotation */
+}
+
+/* Rotate text when screen width is too tight */
+@media (max-width: 600px) { /* Adjust this breakpoint as needed */
+    .bottom-left {
+        transform: rotate(270deg); /* Rotate the text 270 degrees */
+        bottom: 25%; /* Center it vertically */
+        left: 55%; /* Center it horizontally */
+        white-space: nowrap; /* Prevent line breaks */
+        transform-origin: center; /* Ensure rotation happens from the center */
+        /* Use translate to perfectly center the text */
+        transform: translate(-50%, -50%) rotate(270deg);
+    }
+}
+
+/* Adjust #pics */
+#pics {
+    display: flex;
+    flex-direction: row; /* Stack recipe images horizontally */
+    padding: 2rem; /* Space inside the bubble */
+    padding-bottom: 8.07rem;
+    background-color: #f8f9fa; /* Background color of the bubble */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    width: 87rem; /* Allow width to adjust based on content */
+    box-sizing: border-box; /* Include padding and border */
+    justify-content: center; /* Center the items within the container */
+    animation: fadeIn 0.5s; /* Apply animation */
+}
+
+#title1 {
+    background-color: #B4846C; /* Background color */
+    position: relative;
+    border-radius: 10px; /* Rounded corners */
+    padding: 1rem 37.5rem; /* 1rem top/bottom, 20vw left/right for responsiveness */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow */
+    width: 100%; /* Full width of the parent container */
+    height: auto; /* Allow height to adjust based on content */
+    display: flex; /* Use flex for text alignment */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    color: #FFFFFF; /* Text color */
+    font-family: 'Manjari'; /* Set font */
+    font-size: 2.3rem; /* Base font size */
+    margin-top: -1rem; /* Negative margin if needed */
+    overflow: hidden; /* Prevent overflow of content */
+    max-width: 100%;
+    transition: padding 0.3s ease, font-size 0.3s ease; /* Smooth transition */
+    animation: fadeIn 0.5s; /* Apply animation */
+}
+
+@media (max-width: 1200px) {
+    #title1 {
+        padding: 1rem 15%; /* Smaller padding for medium screens */
+        font-size: 2rem; /* Adjust font size */
+    }
+}
+
+@media (max-width: 800px) {
+    #title1 {
+        padding: 1rem 10%; /* Smaller padding for smaller screens */
+        font-size: 1.8rem; /* Smaller font size */
+    }
+}
+
+@media (max-width: 600px) {
+    #title1 {
+        padding: 1rem 5%; /* Even smaller padding for very small screens */
+        font-size: 1.5rem; /* Even smaller font size */
+    }
+}
