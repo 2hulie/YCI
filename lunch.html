@@ -18,99 +18,46 @@
     <style>
         /* Lunch Section Styles */
         #lunch {
-            display: flex; /* Use flexbox for alignment */
+            display: flex; /* Flexbox for alignment */
             flex-direction: column; /* Stack items vertically */
             align-items: center; /* Center content horizontally */
             justify-content: center; /* Center content vertically */
             text-align: center; /* Center text inside */
             padding: 2rem; /* Responsive padding */
-            margin: 0 auto; /* Center horizontally */
-            flex: 1; /* Allow the breakfast section to grow and take available space */
-            box-sizing: border-box; /* Include padding in width calculations */
-            max-width: 600px; /* Set a maximum width for better control */
-            width: 100%; /* Ensure it takes the full width available */
+            flex: 2; /* Allow the breakfast section to grow and take available space */
+            width: 66rem;
+            max-width: 90%; /* To prevent it from stretching too wide */
+            margin: 0 auto; /* Center the element */
             transition: all 0.3s ease; /* Smooth transition for resizing */
         }
 
         /* Recipe section styling */
         .lunch-section {
-            flex: 2; /* Allow it to take more space */
+            flex: 1; /* Allow it to take more space */
             display: flex;
+            position: relative;
+            margin-top: 27rem; /* Space below the title */
+            margin-left: -1.02rem;
             flex-direction: column; /* Stack items vertically */
             align-items: center; /* Center content horizontally */
             justify-content: center; /* Center content vertically */
-            margin-top: -3rem; /* Space above the recipe section */
-            width: 100%; /* Ensure it takes the full width available */
-            padding: 1rem; /* Add padding for better spacing */
+            width: 100%; /* Percentage width for responsiveness */
+            max-width: 100%; /* Maximum width to avoid excessive stretching */
+            padding: 2rem 0 10rem 1rem;
+            overflow: hidden;
+            transform: scale(1); /* Scale down all elements */
             box-sizing: border-box; /* Include padding in the element's total width and height */
-            transform: scale(0.86); /* Scale down all elements */
-            max-width: 100%; /* Ensure it doesn't exceed container width */
             transition: all 0.3s ease; /* Smooth transition for resizing */
         }
 
-        /* Responsive scaling */
-        @media (max-width: 1400px) {
-            #lunch {
-                margin-top: -1rem;
-                transform: scale(0.95); /* Scale down */
-            }
-
-            .lunch-section {
-                transform: scale(0.902); /* Scale down */
-                margin-top: -2rem;
-            }
-
-            #title1 {
-                transform: scale(1.046); /* Scale down */
-            }
-        }
-
-        /* Responsive scaling */
-        @media (max-width: 1200px) {
-            #lunch {
-                transform: scale(0.9); /* Scale down */
-            }
-
-            .lunch-section {
-                transform: scale(0.56); /* Scale down */
-                margin-top: -9rem;
-            }
-
-            #title1 {
-                transform: scale(1.45); /* Scale down */
-            }
-        }
-
-        @media (max-width: 768px) {
-            #lunch {
-                margin-top: -4rem;
-                transform: scale(0.8); /* Scale down */
-            }
-
-            .lunch-section {
-                transform: scale(0.4); /* Scale down */
-                margin-top: -13rem;
-            }
-
-            #title1 {
-                transform: scale(1.4); /* Scale down */
-            }
-        }
-
-        @media (max-width: 480px) {
-            #lunch {
-                margin-top: -14rem;
-                transform: scale(0.4); /* Scale down */
-            }
-
-            .lunch-section {
-                transform: scale(0.7); /* Scale down */
-                margin-top: -2rem;
-            }
-
-            #title1 {
-                transform: scale(3.17); /* Scale down */
-            }
+        .lunch-cards {
+            display: flex;
+            flex-direction: column;
+            width: 100%; /* Ensure it takes full available width */
+            padding: 1rem; /* Add padding for better spacing */
+            max-width: 100%;
+            box-sizing: border-box;
+            flex-wrap: wrap;
         }
 
         /* Recipe item styles */
@@ -119,7 +66,10 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 30rem; /* Fixed width for each recipe item */
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            max-width: 100%;
+            width: auto; /* Fixed width for each recipe item */
             margin: 1rem; /* Space between each recipe item */
             background-color: #f0f0f0; /* Background color for each recipe */
             border-radius: 8px; /* Rounded corners */
@@ -149,8 +99,10 @@
 
         /* Adjust the size of images */
         .lcard img {
-            width: 24rem; /* Set the width of the image */
-            height: 30.9rem; /* Set the height of the image */
+            width: 15rem; /* Set the width of the image */
+            height: 20rem; /* Set the height of the image */
+            box-sizing: border-box;
+            max-width: 100%;
             object-fit: cover; /* Maintain aspect ratio while covering the container */
             border-radius: 8px; /* Rounded corners */
             margin-bottom: 1rem; /* Add space below the image */
@@ -174,7 +126,7 @@
             margin-bottom: 1rem;
             color: #7D5A50;
             font-family: 'Manjari';
-            font-size: 1.7rem;
+            font-size: 1.4rem;
         }
 
         /* Pagination container inside #pics */
@@ -191,14 +143,14 @@
 
         /* Style for the arrow buttons */
         .pagination-container .arrow img {
-            width: 24px; /* Adjust arrow size */
-            height: 24px;
+            width: 18px; /* Adjust arrow size */
+            height: 18px;
             cursor: pointer; /* Show pointer cursor on hover */
         }
 
         /* Style for page number text */
         .pagination-container .page-number {
-            font-size: 1.5rem; /* Adjust the font size */
+            font-size: 1.2rem; /* Adjust the font size */
             color: #B4846C; /* Match the color to the category title */
         }
 
@@ -241,7 +193,7 @@
 
                     <div class="social-links">
                         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lr.jesperas@mmdc.mcl.edu.ph" target="_blank"><img src="assets/icon_email.svg" alt="Email"></a>
-                        <a href="https://github.com/2hulie/YCI.git" target="_blank"><img src="assets/icon_github.svg" alt="Github"></a>
+                        <a href="https://github.com/Sempuri" target="_blank"><img src="assets/icon_github.svg" alt="Github"></a>
                         <a href="https://www.facebook.com/reiman.cristobal" target="_blank"><img src="assets/icon_fb.svg" alt="Facebook"></a>
                     </div>
                 </div>
