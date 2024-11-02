@@ -217,7 +217,7 @@ nav {
     align-items: center; /* Center child elements */
     justify-content: center; /* Center child elements */
     margin: 2rem auto; /* Center and set top margin */
-    max-width: 100%; /* Ensure it doesn't exceed container width */
+    max-width: 75%; /* Ensure it doesn't exceed container width */
 }
 
 /* Animation class */
@@ -254,7 +254,7 @@ nav {
 
 .icon {
     width: 100%; /* Use full width of the parent container */
-    max-width: 500px; /* Limit maximum width */
+    max-width: 450px; /* Limit maximum width */
     height: auto; /* Auto height to maintain aspect ratio */
     margin: auto; /* Center the icon horizontally */
     display: flex; /* Use flexbox for centering */
@@ -287,8 +287,8 @@ nav {
 
 /* Keep the size of option images unchanged */
 .options img {
-    width: 270px; /* Maintain previous width */
-    height: 190px; /* Maintain previous height */
+    width: 215px; /* Maintain previous width */
+    height: 150px; /* Maintain previous height */
     object-fit: cover; /* Ensure the image covers the area */
     border-radius: 10px; /* Rounded corners for the option images */
     max-width: 100%; /* Optional: Ensure it doesn't exceed the parent */
@@ -308,15 +308,22 @@ nav {
     border-radius: 5px; /* Rounded corners */
     font-family: 'Manjari'; /* Your desired font */
     font-size: 1.5rem; /* Font size */
-    transition: transform 0.3s ease; /* Smooth transition for rotation */
+    transition: font-size 0.3s ease, transform 0.3s ease; /* Smooth transition for rotation */
+}
+
+@media (max-width: 1200px) { 
+    .bottom-left {
+        font-size: 1.2rem;
+    }
 }
 
 /* Rotate text when screen width is too tight */
-@media (max-width: 600px) { /* Adjust this breakpoint as needed */
+@media (max-width: 800px) {
     .bottom-left {
         transform: rotate(270deg); /* Rotate the text 270 degrees */
         bottom: 25%; /* Center it vertically */
         left: 55%; /* Center it horizontally */
+        font-size: 1.3rem;
         white-space: nowrap; /* Prevent line breaks */
         transform-origin: center; /* Ensure rotation happens from the center */
         /* Use translate to perfectly center the text */
@@ -340,43 +347,22 @@ nav {
 }
 
 #title1 {
-    background-color: #B4846C; /* Background color */
+    background-color: #B4846C;
     position: relative;
-    border-radius: 10px; /* Rounded corners */
-    padding: 1rem 37.5rem; /* 1rem top/bottom, 20vw left/right for responsiveness */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow */
-    width: 100%; /* Full width of the parent container */
-    height: auto; /* Allow height to adjust based on content */
-    display: flex; /* Use flex for text alignment */
-    align-items: center; /* Center text vertically */
-    justify-content: center; /* Center text horizontally */
-    color: #FFFFFF; /* Text color */
-    font-family: 'Manjari'; /* Set font */
-    font-size: 2.3rem; /* Base font size */
-    margin-top: -1rem; /* Negative margin if needed */
-    overflow: hidden; /* Prevent overflow of content */
-    max-width: 100%;
-    transition: padding 0.3s ease, font-size 0.3s ease; /* Smooth transition */
-    animation: fadeIn 0.5s; /* Apply animation */
-}
-
-@media (max-width: 1200px) {
-    #title1 {
-        padding: 1rem 15%; /* Smaller padding for medium screens */
-        font-size: 2rem; /* Adjust font size */
-    }
-}
-
-@media (max-width: 800px) {
-    #title1 {
-        padding: 1rem 10%; /* Smaller padding for smaller screens */
-        font-size: 1.8rem; /* Smaller font size */
-    }
-}
-
-@media (max-width: 600px) {
-    #title1 {
-        padding: 1rem 5%; /* Even smaller padding for very small screens */
-        font-size: 1.5rem; /* Even smaller font size */
-    }
+    border-radius: 10px;
+    padding: 1.5% 49%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-family: 'Manjari';
+    font-size: 2.3rem; 
+    margin-top: -1rem;
+    margin-bottom: -28rem;
+    overflow: hidden;
+    max-width: 90%;
+    transition: padding 0.3s ease, font-size 0.3s ease;
+    animation: fadeIn 0.5s;
 }
