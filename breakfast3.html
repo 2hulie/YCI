@@ -18,17 +18,16 @@
     <style>
         /* Breakfast Section Styles */
         #breakfast3 {
-            display: flex; /* Use flexbox for alignment */
+            display: flex; /* Flexbox for alignment */
             flex-direction: column; /* Stack items vertically */
             align-items: center; /* Center content horizontally */
             justify-content: center; /* Center content vertically */
             text-align: center; /* Center text inside */
             padding: 2rem; /* Responsive padding */
-            margin: 0 auto; /* Center horizontally */
-            flex: 1; /* Allow the breakfast section to grow and take available space */
-            box-sizing: border-box; /* Include padding in width calculations */
-            max-width: 600px; /* Set a maximum width for better control */
-            width: 100%; /* Ensure it takes the full width available */
+            flex: 2; /* Allow the breakfast section to grow and take available space */
+            width: 66rem;
+            max-width: 90%; /* To prevent it from stretching too wide */
+            margin: 0 auto; /* Center the element */
             transition: all 0.3s ease; /* Smooth transition for resizing */
         }
 
@@ -36,13 +35,15 @@
         .breakfast3-section {
             flex: 1; /* Allow it to take more space */
             display: flex;
+            position: relative;
+            margin-top: 31rem;
+            margin-left: -1.02rem;
             flex-direction: column; /* Stack items vertically */
             align-items: center; /* Center content horizontally */
             justify-content: center; /* Center content vertically */
             width: 100%; /* Ensure it takes the full width available */
-            padding: 1.5rem; 
+            padding: 2rem 0 10rem 1rem;
             box-sizing: border-box; /* Include padding in the element's total width and height */
-            transform: scale(0.86); /* Scale down all elements */
             max-width: 100%; /* Ensure it doesn't exceed container width */
             transition: all 0.3s ease; /* Smooth transition for resizing */
         }
@@ -51,71 +52,7 @@
             white-space: nowrap;
         }
 
-        /* Responsive scaling */
-        @media (max-width: 1400px) {
-            #breakfast3 {
-                margin-top: -1rem;
-                transform: scale(0.95); /* Scale down */
-            }
-
-            .breakfast3-section {
-                transform: scale(0.902); /* Scale down */
-                margin-top: -1rem;
-            }
-
-            #title1 {
-                transform: scale(1.046); /* Scale down */
-            }
-        }
-
-        /* Responsive scaling */
-        @media (max-width: 1200px) {
-            #breakfast3 {
-                transform: scale(0.9); /* Scale down */
-            }
-
-            .breakfast3-section {
-                transform: scale(0.56); /* Scale down */
-                margin-top: -7rem;
-            }
-
-            #title1 {
-                transform: scale(1.45); /* Scale down */
-            }
-        }
-
-        @media (max-width: 768px) {
-            #breakfast3 {
-                margin-top: -4rem;
-                transform: scale(0.8); /* Scale down */
-            }
-
-            .breakfast3-section {
-                transform: scale(0.4); /* Scale down */
-                margin-top: -11rem;
-            }
-
-            #title1 {
-                transform: scale(1.4); /* Scale down */
-            }
-        }
-
-        @media (max-width: 480px) {
-            #breakfast3 {
-                margin-top: -14rem;
-                transform: scale(0.4); /* Scale down */
-            }
-
-            .breakfast3-section {
-                transform: scale(0.7); /* Scale down */
-                margin-top: 1rem;
-            }
-
-            #title1 {
-                transform: scale(3.17); /* Scale down */
-            }
-        }
-
+       
         /* Adjust #pics */
         #pics {
             display: flex;
@@ -124,11 +61,22 @@
             background-color: #f8f9fa; /* Background color of the bubble */
             border-radius: 10px; /* Rounded corners */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-            width: 87rem; /* Allow width to adjust based on content */
+            width: 100%; /* Allow width to adjust based on content */
             box-sizing: border-box; /* Include padding and border */
             justify-content: center; /* Center the items within the container */
             animation: fadeIn 0.5s; /* Apply animation */
             margin-top: -4rem;
+            flex-wrap: wrap;
+            max-width: 100%;
+        }
+
+        .breakfast3-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* Recipe item styles */
@@ -136,19 +84,58 @@
             display: flex;
             flex-direction: row; 
             align-items: flex-start; 
-            margin: 0.5rem; /* Keep or reduce margin around the card */
             border-radius: 10rem; 
-            padding: 0.5rem; /* Reduce padding inside the card */
-            gap: 1rem; /* Adjust gap between image and content */
+        }
+
+         /* Responsive behavior */
+         @media (max-width: 1200px) {
+            .b3card img {
+                width: 60%; /* Cover the whole width of the card */
+                height: auto; /* Maintain aspect ratio */
+                justify-content: center;
+                margin-left: 2rem;
+                max-width: 100%; /* Allow full width without constraints */
+            }
+
+            .b3card {
+                flex-direction: column; /* Stack image on top of content */
+                align-items: center; /* Center items if necessary */
+                margin: auto;
+                width: 100%; /* Ensure the card takes full width */
+            }
+
+            .b3card-content {
+                width: 100%; /* Ensure content takes full width of the card */
+                padding: 1rem; 
+                box-sizing: border-box; /* Include padding in the total width */
+            }
+        }
+
+        @media (max-width: 700px) {
+            #title1 {
+                font-size: 1.7rem;
+            }
+            .ingredients-tools-container {
+                flex-direction: column; /* Stack ingredients and tools vertically */
+                align-items: flex-start; /* Align items to the start */
+            }
+
+            .tools {
+                margin-top: -1.7rem; /* Space between ingredients and tools */
+            }
+
+            .b3card-content {
+                margin-bottom: 1rem; /* Space between tools and step procedure */
+            }
         }
 
         /* Adjust the size of images */
         .b3card img {
-            width: 20rem; /* Keep the reduced image width */
+            width: 20rem; 
             height: 40rem; /* Automatically adjust height */
             object-fit: cover; 
+            max-width: 100%;
             border-radius: 8px; 
-            margin: 0; /* No margin */
             transition: transform 0.3s ease-in-out; 
             margin-right: 2rem;
         }
@@ -159,6 +146,7 @@
             display: flex;
             flex-direction: column;
             color: #7D5A50;
+            font-size: 1.15rem;
             font-family: 'Mandali';
         }
 
@@ -168,7 +156,7 @@
             color: #7D5A50; /* Use a consistent color for headings */
             margin-top: 1rem; /* Add space above the heading */
             margin-bottom: 0.5rem; /* Space below the heading */
-            font-size: 2.1rem; /* Set a standard font size */
+            font-size: 1.5rem; /* Set a standard font size */
             font-weight: bold; /* Make the text bold for emphasis */
             text-align: left; /* Align text to the left */
         }
@@ -239,7 +227,7 @@
 
                     <div class="social-links">
                         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lr.jesperas@mmdc.mcl.edu.ph" target="_blank"><img src="assets/icon_email.svg" alt="Email"></a>
-                        <a href="https://github.com/2hulie/YCI.git" target="_blank"><img src="assets/icon_github.svg" alt="Github"></a>
+                        <a href="https://github.com/Sempuri" target="_blank"><img src="assets/icon_github.svg" alt="Github"></a>
                         <a href="https://www.facebook.com/reiman.cristobal" target="_blank"><img src="assets/icon_fb.svg" alt="Facebook"></a>
                     </div>
                 </div>
