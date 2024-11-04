@@ -46,6 +46,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Fetch titles when the page loads
     fetchTitles();
 
+    // Function to apply the custom cursor style to suggestions
+    function applyCustomCursor() {
+        suggestionsContainer.style.cursor = 'url("assets/cursor_select.svg"), pointer';
+        // Optionally, you can apply the same for each suggestion item:
+        const suggestionItems = document.querySelectorAll('.suggestion-item');
+        suggestionItems.forEach(item => {
+            item.style.cursor = 'url("assets/cursor_select.svg"), pointer';
+        });
+    }
+
     // Event listener for search input
     searchInput.addEventListener('input', function () {
         const query = searchInput.value.toLowerCase();
@@ -69,6 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     suggestionsContainer.appendChild(suggestion);
                 });
                 suggestionsContainer.style.display = 'block'; // Show suggestions if there are any
+                applyCustomCursor(); // Reapply custom cursor for suggestions
+
                 searchInput.placeholder = 'Search for recipe'; // Reset placeholder when there are matches
             }
         } else {
@@ -118,6 +130,13 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', function (event) {
         if (!searchInput.contains(event.target) && !suggestionsContainer.contains(event.target)) {
             suggestionsContainer.style.display = 'none'; // Hide suggestions
+        }
+    });
+
+    // Reapply cursor style on visibility change
+    document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') {
+            applyCustomCursor(); // Reapply cursor when the page becomes visible again
         }
     });
 });
