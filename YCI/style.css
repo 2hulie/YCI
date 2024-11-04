@@ -26,6 +26,32 @@ body {
     margin: 0; /* No default margin */
     min-height: 100vh; /* Ensure body takes full height */
     overflow-x: hidden; /* Prevent horizontal scroll */
+    cursor: url("assets/cursor_default.svg"), auto;
+}
+
+/* Text cursor (e.g., when hovering over text inputs or selectable text) */
+input[type="text"], textarea, .text-cursor {
+    cursor: url("assets/cursor_text.svg"), text;
+}
+
+/* Default cursor for all clickable elements */
+a, button, .clickable {
+    cursor: url("assets/cursor_select.svg"), pointer;
+}
+
+/* SVG buttons */
+#surprise-button, #search-button, #send-button {
+    cursor: url("assets/cursor_select.svg"), pointer;
+}
+
+/* Suggestions container and items */
+.suggestions-container {
+    cursor: url("assets/cursor_select.svg"), pointer;
+}
+
+/* Style for individual suggestion items */
+.suggestion-item {
+    cursor: url("assets/cursor_select.svg"), pointer;
 }
 
 /* Nav Styles */
