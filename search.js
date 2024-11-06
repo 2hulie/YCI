@@ -126,6 +126,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Listen for Enter key press to trigger the search button action
+    searchInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            const query = searchInput.value.trim();
+            if (query) {
+                const matchingTitle = titles.find(title => title.toLowerCase() === query.toLowerCase());
+                if (matchingTitle) {
+                    // Redirect to the corresponding page
+                    window.location.href = mapTitleToPage(matchingTitle);
+                } else {
+                    // Update placeholder with no matching message
+                    searchInput.placeholder = 'No matching recipe found';
+                    searchInput.value = ''; // Clear the input field
+                }
+            } else {
+                searchInput.placeholder = 'Please enter a recipe name to search';
+            }
+        }
+    });
+
     // Close suggestions if clicking outside of the input or suggestions
     document.addEventListener('click', function (event) {
         if (!searchInput.contains(event.target) && !suggestionsContainer.contains(event.target)) {
