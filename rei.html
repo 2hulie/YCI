@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wekwekwek</title>
+    <title>生日快乐</title>
+    <!-- Import Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
-        /* Previous styles remain the same */
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
@@ -15,8 +14,8 @@
             text-align: center;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(135deg, #A2E4FF, #FFD700);
-            min-height: 100vh;
+            background: linear-gradient(135deg, #341c3f, #26764f); 
+            cursor: url('assets/rei/duck_cursor.cur'), auto;
         }
 
         .container {
@@ -29,107 +28,170 @@
             z-index: 1;
         }
 
-        .auth-container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 90%;
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 6rem;
+            margin: 0;
+            color: #266848; /* Main text color */
+            text-shadow: 
+                -1px -1px 0 #fff,  
+                1px -1px 0 #000,
+                -1px 1px 0 #fff,
+                1px 1px 0 #000; /* Outline effect */
+            animation: bounce 2s infinite;
         }
 
-        .content-container {
-            display: none;
+        .message {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Rest of the previous styles remain the same */
-        
-        .password-input {
-            width: 60%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
-        .submit-button {
-            background: #FFD700;
+        .image-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            position: relative; /* Position relative for absolute positioning of overlay */
+        }
+
+        .main-image {
+            width: 600px; /* Increased size */
+            height: auto;
             border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            filter: blur(80px); /* Apply initial blur effect */
+            transition: filter 0.3s; /* Smooth transition for blur effect */
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            color: white;
+            opacity: 50%;
             padding: 10px 20px;
-            border-radius: 5px;
-            color: #333;
-            font-size: 16px;
             cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 10px;
+            font-size: 3rem;
+            border-radius: 5px;
+            margin: 0 10px;
         }
 
-        .submit-button:hover {
-            background: #FFC700;
+        .nav-button:hover {
+            opacity: 100%; /* Make the button fully visible on hover */
         }
 
-        .status-message {
-            margin-top: 10px;
-            color: #666;
+        .reveal-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(227, 227, 227);
+            font-size: 2rem;
+            opacity: 1;
+            pointer-events: none; /* Prevent interaction with the overlay */
+        }
+
+        .reveal-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background */
+            padding: 100px 100px; /* Padding around the text */
+            border-radius: 200px; /* Rounded corners */
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <!-- Password Form -->
-        <div id="passwordForm" class="auth-container">
-            <h2>Enter Password</h2>
-            <p>Hint: Recent Drama</p>
-            <input type="password" id="passwordInput" class="password-input" placeholder="Enter password" />
-            <button onclick="checkPassword()" class="submit-button">Submit</button>
-            <p id="statusMessage" class="status-message"></p>
-        </div>
+<body onclick="createFullScreenConfetti();">
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="assets/rei/hbd_bgm.mp3" type="audio/mp3">
+    </audio>
 
-        <!-- Main Content (Hidden by default) -->
-        <!-- Previous content container remains the same -->
+    <div class="container">
+        <h1>Happy 18th Birthday!</h1>
+        <div class="message">
+            <p>Sana okay lang tong nagawa ko HASHASHAHSAHSAH
+                <br>save mo lang siya as image if syempre gusto mo siyang gamitin otherwise oks lang din 😔😔😔 char HAHSHAHSAHSAH
+                <br>wekwkewkewkekwekwekwkekwekwekw ayun lang happy birthday ulit 🥳🎉🎂🎁
+                <br><br>- zhulie 🎀
+            </p>
+        </div>
+        <div class="image-container">
+            <button class="nav-button" onclick="changeImage(-1)">&#10094;</button>
+            <img id="mainImage" class="main-image" src="assets/rei/Rei_noBG.png" alt="Main Image" onclick="makeImageVisible();" />
+            <button class="nav-button" onclick="changeImage(1)">&#10095;</button>
+            <div class="reveal-background" onclick="makeImageVisible();">
+                <div class="reveal-text">Reveal</div> <!-- Overlay text with dark background -->
+            </div>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script>
-        // Initialize EmailJS with your user ID
-        (function(){
-            emailjs.init("YMnk0AUVu1cHH9mwK"); // Replace with your EmailJS user ID
-        })();
-
-        function checkPassword() {
-            const password = document.getElementById('passwordInput').value;
-            const statusMessage = document.getElementById('statusMessage');
-            
-            if (!password) {
-                statusMessage.textContent = 'Please enter a password';
-                return;
-            }
-
-            // Send email notification about password attempt
-            const templateParams = {
-                to_email: 'puyinyina@gmail.com', // Replace with your email
-                attempted_password: password
-            };
-
-            emailjs.send('service_bn35rsk', 'template_9thmdhf', templateParams)
-                .then(function(response) {
-                    statusMessage.textContent = 'Password attempt received. Please wait for verification.';
-                }, function(error) {
-                    statusMessage.textContent = 'There was an error. Please try again.';
-                });
-        }
-
-        // Check for access token in URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const accessToken = urlParams.get('access_token');
+        const audioElement = document.getElementById('backgroundMusic');
         
-        if (accessToken === 'approved') {
-            document.getElementById('passwordForm').style.display = 'none';
-            document.getElementById('mainContent').style.display = 'block';
-            createBackgroundConfetti();
+        const images = [
+            "assets/rei/Rei_noBG.png",
+            "assets/rei/Rei_white.png",
+            "assets/rei/Rei_red.png",
+            "assets/rei/Rei_rust.png",
+            "assets/rei/Rei_brown.png",
+            "assets/rei/Rei_gold.png",
+            "assets/rei/Rei_violet.png",
+            "assets/rei/Rei_purple.png"
+        ];
+        let currentIndex = 0;
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1; // Loop to last image
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0; // Loop to first image
+            }
+            document.getElementById('mainImage').src = images[currentIndex];
         }
 
-        // Previous functions remain the same
+        function makeImageVisible() {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.style.filter = 'none'; // Remove blur effect
+            const revealText = document.querySelector('.reveal-background');
+            revealText.style.display = 'none'; // Hide the reveal text background
+        }
+
+        function createFullScreenConfetti() {
+            confetti({
+                particleCount: 200,
+                spread: 200,
+                origin: { x: Math.random(), y: 0.2 }
+            });
+        }
+
+        function createBackgroundConfetti() {
+            setInterval(() => {
+                confetti({
+                    particleCount: 50,
+                    spread: 500,
+                    origin: { x: Math.random(), y: 0.2 }
+                });
+            }, 500);
+        }
+
+        // Start background confetti and audio visualization
+        createBackgroundConfetti();
+        audioElement.play();
     </script>
 </body>
 </html>
