@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise with Confetti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        /* Previous styles remain the same */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #A2E4FF, #FFD700);
+            min-height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .auth-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .content-container {
+            display: none;
+        }
+
+        /* Rest of the previous styles remain the same */
+        
+        .password-input {
+            width: 60%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .submit-button {
+            background: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background: #FFC700;
+        }
+
+        .status-message {
+            margin-top: 10px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Password Form -->
+        <div id="passwordForm" class="auth-container">
+            <h2>Enter Password</h2>
+            <p>Hint: Recent Drama</p>
+            <input type="password" id="passwordInput" class="password-input" placeholder="Enter password" />
+            <button onclick="checkPassword()" class="submit-button">Submit</button>
+            <p id="statusMessage" class="status-message"></p>
+        </div>
+
+        <!-- Main Content (Hidden by default) -->
+        <!-- Previous content container remains the same -->
+    </div>
+
+    <script>
+        // Initialize EmailJS with your user ID
+        (function(){
+            emailjs.init("YMnk0AUVu1cHH9mwK"); // Replace with your EmailJS user ID
+        })();
+
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const statusMessage = document.getElementById('statusMessage');
+            
+            if (!password) {
+                statusMessage.textContent = 'Please enter a password';
+                return;
+            }
+
+            // Send email notification about password attempt
+            const templateParams = {
+                to_email: 'puyinyina@gmail.com', // Replace with your email
+                attempted_password: password
+            };
+
+            emailjs.send('service_bn35rsk', 'template_9thmdhf', templateParams)
+                .then(function(response) {
+                    statusMessage.textContent = 'Password attempt received. Please wait for verification.';
+                }, function(error) {
+                    statusMessage.textContent = 'There was an error. Please try again.';
+                });
+        }
+
+        // Check for access token in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const accessToken = urlParams.get('access_token');
+        
+        if (accessToken === 'approved') {
+            document.getElementById('passwordForm').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+            createBackgroundConfetti();
+        }
+
+        // Previous functions remain the same
+    </script>
+</body>
+</html>
